@@ -1,0 +1,81 @@
+﻿@model IEnumerable<QLTRO.DB.NGUOIDUNG>
+
+@{
+    ViewBag.Title = "NguoiDung";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>DANH SÁCH NGƯỜI DÙNG</h2>
+
+
+<p>
+    <a class="btn btn-primary" href="#">Create New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>STT</td>
+            <td>TÊN NGƯỜI DÙNG</td>
+            <td>ĐỊA CHỈ</td>
+            <td>GIỚI TÍNH</td>
+            <td>NGÀY SINH</td>
+            <td>SỐ CCCD</td>
+            <td>SĐT</td>
+            <td>EMAIL</td>
+            <td>MẬT KHẨU</td>
+            <td>NHÂN VIÊN</td>
+            <td>KHÁCH HÀNG</td>
+            <td>QUẢN LÝ</td>
+            <td>CÔNG CỤ</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaND</td>
+                <td>
+                    @item.TenND
+                </td>
+                <td>
+                    @item.DiaChiThuongTru
+                </td>
+                <td>
+                    @item.GioiTinh
+                </td>
+                <td>
+                     @item.NgaySinh.Value.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.SoCCCD
+                </td>
+                <td>
+                    @item.SDT
+                </td>
+                <td>
+                    @item.Email
+                </td>
+
+                <td>
+                    @item.MatKhau
+                </td>
+                <td>
+                    @item.isNhanVien
+                </td>
+                <td>
+                    @item.isKhachHang
+                </td>
+                <td>
+                    @item.isQuanly
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="#">Edit</a>
+                    <a class="btn btn-primary" href="#">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+   
+
+</table>

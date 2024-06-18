@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLnhatroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="IdHoaDon" />
+    </Key>
+    <Property Name="IdHoaDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdND" Type="Int32" />
+    <Property Name="TenND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="IDPhong" Type="Int32" />
+    <Property Name="SoPhong" Type="Int32" />
+    <Property Name="TienDien" Type="Single" />
+    <Property Name="TienNuoc" Type="Single" />
+    <Property Name="TienPhong" Type="Single" />
+    <Property Name="TongTien" Type="Single" />
+    <Property Name="TinhTrang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
+    <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
+    <Property Name="TienNo" Type="Single" />
+    <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK_HOADON_NGUOIDUNG" FromRole="HOADON" ToRole="NGUOIDUNG" />
+    <NavigationProperty Name="PHONGTRO" Relationship="Self.FK_HOADON_PHONGTRO" FromRole="HOADON" ToRole="PHONGTRO" />
+    <NavigationProperty Name="HOPDONGs" Relationship="Self.FK_HOPDONG_HOADON" FromRole="HOADON" ToRole="HOPDONG" />
+  </EntityType>
+  <EntityType Name="HOPDONG">
+    <Key>
+      <PropertyRef Name="IdHopDong" />
+    </Key>
+    <Property Name="IdHopDong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdND" Type="Int32" />
+    <Property Name="TenND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdPhong" Type="Int32" />
+    <Property Name="SoPhong" Type="Int32" />
+    <Property Name="TienPhong" Type="Single" />
+    <Property Name="NgayKi" Type="DateTime" Precision="0" />
+    <Property Name="NgayHetHan" Type="DateTime" Precision="0" />
+    <Property Name="TienCoc" Type="Single" />
+    <Property Name="IdHoaDon" Type="Int32" />
+    <NavigationProperty Name="HOADON" Relationship="Self.FK_HOPDONG_HOADON" FromRole="HOPDONG" ToRole="HOADON" />
+    <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK_HOPDONG_NGUOIDUNG" FromRole="HOPDONG" ToRole="NGUOIDUNG" />
+    <NavigationProperty Name="PHONGTRO" Relationship="Self.FK_HOPDONG_PHONGTRO" FromRole="HOPDONG" ToRole="PHONGTRO" />
+  </EntityType>
+  <EntityType Name="NGUOIDUNG">
+    <Key>
+      <PropertyRef Name="MaND" />
+    </Key>
+    <Property Name="MaND" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChiThuongTru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="SoCCCD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDangKi" Type="DateTime" Precision="0" />
+    <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isNhanVien" Type="Boolean" />
+    <Property Name="isKhachHang" Type="Boolean" />
+    <Property Name="isQuanly" Type="Boolean" />
+    <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_NGUOIDUNG" FromRole="NGUOIDUNG" ToRole="HOADON" />
+    <NavigationProperty Name="HOPDONGs" Relationship="Self.FK_HOPDONG_NGUOIDUNG" FromRole="NGUOIDUNG" ToRole="HOPDONG" />
+  </EntityType>
+  <EntityType Name="PHONGTRO">
+    <Key>
+      <PropertyRef Name="IDPhong" />
+    </Key>
+    <Property Name="IDPhong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoPhong" Type="Int32" Nullable="false" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DienTich" Type="Single" />
+    <Property Name="TienPhong" Type="Single" />
+    <NavigationProperty Name="HOADONs" Relationship="Self.FK_HOADON_PHONGTRO" FromRole="PHONGTRO" ToRole="HOADON" />
+    <NavigationProperty Name="HOPDONGs" Relationship="Self.FK_HOPDONG_PHONGTRO" FromRole="PHONGTRO" ToRole="HOPDONG" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_HOADON_NGUOIDUNG">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="MaND" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="IdND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOADON_PHONGTRO">
+    <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="0..1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGTRO">
+        <PropertyRef Name="IDPhong" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="IDPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOPDONG_HOADON">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="IdHoaDon" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="IdHoaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOPDONG_NGUOIDUNG">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="MaND" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="IdND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOPDONG_PHONGTRO">
+    <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGTRO">
+        <PropertyRef Name="IDPhong" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="IdPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLnhatroEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+    <EntitySet Name="HOPDONGs" EntityType="Self.HOPDONG" />
+    <EntitySet Name="NGUOIDUNGs" EntityType="Self.NGUOIDUNG" />
+    <EntitySet Name="PHONGTROes" EntityType="Self.PHONGTRO" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_HOADON_NGUOIDUNG" Association="Self.FK_HOADON_NGUOIDUNG">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOADON_PHONGTRO" Association="Self.FK_HOADON_PHONGTRO">
+      <End Role="PHONGTRO" EntitySet="PHONGTROes" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOPDONG_HOADON" Association="Self.FK_HOPDONG_HOADON">
+      <End Role="HOADON" EntitySet="HOADONs" />
+      <End Role="HOPDONG" EntitySet="HOPDONGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOPDONG_NGUOIDUNG" Association="Self.FK_HOPDONG_NGUOIDUNG">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+      <End Role="HOPDONG" EntitySet="HOPDONGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOPDONG_PHONGTRO" Association="Self.FK_HOPDONG_PHONGTRO">
+      <End Role="PHONGTRO" EntitySet="PHONGTROes" />
+      <End Role="HOPDONG" EntitySet="HOPDONGs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

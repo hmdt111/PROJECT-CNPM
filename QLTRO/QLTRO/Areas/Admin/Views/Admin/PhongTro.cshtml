@@ -1,0 +1,49 @@
+﻿@model IEnumerable<QLTRO.DB.PHONGTRO>
+
+@{
+    ViewBag.Title = "PhongTro";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>DANH SÁCH PHÒNG TRỌ</h2>
+
+<p>
+    <a class="btn btn-primary" href="#">Create New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>SỐ PHÒNG</td>
+            <td>DIỆN TÍCH</td>
+            <td>TIỀN PHÒNG</td>
+            <td>MÔ TẢ</td>
+            <td>HÌNH ẢNH</td>
+            <td>TRẠNG THÁI</td>
+            <td>CÔNG CỤ</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IDPhong</td>
+                <td> @item.SoPhong</td>
+                <td>@item.DienTich m²</td>
+                <td>@string.Format("{0:#,0}",item.TienPhong)</td>
+                <td>@item.MoTa</td>
+                <td> <img src="~/Areas/Admin/assets/images/@item.HinhAnh" alt="" /></td>
+                <td>@item.TrangThai</td>
+                <td>
+                    <a class="btn btn-primary" href="#">Edit</a>
+                    <a class="btn btn-primary" href="#">Delete</a>
+                </td>
+                
+            </tr>
+        }
+
+    </tbody>
+
+
+
+</table>

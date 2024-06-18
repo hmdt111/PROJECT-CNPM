@@ -1,0 +1,74 @@
+﻿@model IEnumerable<QLTRO.DB.HOADON>
+
+@{
+    ViewBag.Title = "HoaDon";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>DANH SÁCH HOÁ ĐƠN</h2>
+
+<p>
+    <a class="btn btn-primary" href="#">Create New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>STT</td>
+            <td>NGÀY BẮT ĐẦU</td>
+            <td>NGÀY KẾT THÚC</td>
+            <td>TÊN KHÁCH HÀNG</td>
+            <td>SỐ ĐIỆN THOẠI</td>
+            <td>SỐ PHÒNG</td>
+            <td>TIỀN ĐIỆN</td>
+            <td>TIỀN NƯỚC</td>
+            <td>TIỀN PHÒNG</td>
+            <td>TIỀN NỢ</td>
+            <td>TỔNG TIỀN</td>
+            <td>TÌNH TRẠNG</td>
+            <td>CÔNG CỤ</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdHoaDon</td>
+                <td>@item.NgayBatDau</td>
+                <td>@item.NgayKetThuc</td>
+                <td>@item.NGUOIDUNG.TenND </td>
+
+                <td> @item.SDT</td>
+                <td>@item.SoPhong</td>
+                <td>
+                    @string.Format("{0:#,0}", item.TienDien)
+                </td>
+                <td>
+                    @string.Format("{0:#,0}", item.TienNuoc)
+                </td>
+                <td>
+                    @string.Format("{0:#,0}", item.TienPhong)
+                </td>
+                <td>
+                    @string.Format("{0:#,0}", item.TienNo)
+                </td>
+                <td>
+                    @string.Format("{0:#,0}", item.TienNuoc+item.TienDien+item.TienPhong+item.TienNo)
+                </td>
+                <td>
+                    @item.TinhTrang
+                </td>
+
+
+
+
+                <td>
+                    <a class="btn btn-primary" href="#">Edit</a>
+                    <a class="btn btn-primary" href="#">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>

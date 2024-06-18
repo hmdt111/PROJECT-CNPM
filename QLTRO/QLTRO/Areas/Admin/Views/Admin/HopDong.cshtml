@@ -1,0 +1,71 @@
+﻿@model IEnumerable<QLTRO.DB.HOPDONG>
+
+@{
+    ViewBag.Title = "HopDong";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>DANH SÁCH HỢP ĐỒNG</h2>
+
+
+<p>
+    <a class="btn btn-primary" href="#">Create New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>STT</td>
+            <td>NGÀY KÍ HĐ</td>
+            <td>NGÀY HẾT HẠN HĐ</td>
+            <td>TÊN KHÁCH HÀNG</td>
+            <td>SỐ CCCD</td>
+            <td>SĐT</td>
+            <td>SỐ PHÒNG</td>
+            <td>TIỀN PHÒNG</td>
+            <td>TIỀN CỌC</td>
+            <td>HÌNH ẢNH</td>
+            <td>CÔNG CỤ</td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdHopDong</td>
+                <td>
+                    @item.NgayKi.Value.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.NgayHetHan.Value.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.NGUOIDUNG.TenND
+                </td>
+                <td>
+                    @item.NGUOIDUNG.SoCCCD
+                </td>
+                <td>@item.NGUOIDUNG.SDT</td>
+
+                <td>
+                    @item.SoPhong
+                </td>
+                <td>@string.Format("{0:#,0}", item.TienPhong)</td>
+
+
+                <td>@string.Format("{0:#,0}", item.TienCoc)</td>
+
+
+                <td> <img src="~/Areas/Admin/assets/images/@item.PHONGTRO.HinhAnh" alt="" /></td>
+                <td>
+                    <a class="btn btn-primary" href="#">Edit</a>
+                    <a class="btn btn-primary" href="#">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+
+
+</table>

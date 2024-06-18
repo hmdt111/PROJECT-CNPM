@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLnhatroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="IdHoaDon" />
+    </Key>
+    <Property Name="IdHoaDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdND" Type="int" />
+    <Property Name="TenND" Type="nvarchar(max)" />
+    <Property Name="SDT" Type="char" MaxLength="10" />
+    <Property Name="IDPhong" Type="int" />
+    <Property Name="SoPhong" Type="int" />
+    <Property Name="TienDien" Type="real" />
+    <Property Name="TienNuoc" Type="real" />
+    <Property Name="TienPhong" Type="real" />
+    <Property Name="TongTien" Type="real" />
+    <Property Name="TinhTrang" Type="nvarchar(max)" />
+    <Property Name="NgayBatDau" Type="date" />
+    <Property Name="NgayKetThuc" Type="date" />
+    <Property Name="TienNo" Type="real" />
+  </EntityType>
+  <EntityType Name="HOPDONG">
+    <Key>
+      <PropertyRef Name="IdHopDong" />
+    </Key>
+    <Property Name="IdHopDong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdND" Type="int" />
+    <Property Name="TenND" Type="nvarchar(max)" />
+    <Property Name="IdPhong" Type="int" />
+    <Property Name="SoPhong" Type="int" />
+    <Property Name="TienPhong" Type="real" />
+    <Property Name="NgayKi" Type="date" />
+    <Property Name="NgayHetHan" Type="date" />
+    <Property Name="TienCoc" Type="real" />
+    <Property Name="IdHoaDon" Type="int" />
+  </EntityType>
+  <EntityType Name="NGUOIDUNG">
+    <Key>
+      <PropertyRef Name="MaND" />
+    </Key>
+    <Property Name="MaND" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenND" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DiaChiThuongTru" Type="nvarchar(max)" />
+    <Property Name="GioiTinh" Type="nvarchar(max)" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="SoCCCD" Type="char" MaxLength="10" />
+    <Property Name="SDT" Type="char" MaxLength="10" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="NgayDangKi" Type="date" />
+    <Property Name="MatKhau" Type="nvarchar(max)" />
+    <Property Name="isNhanVien" Type="bit" />
+    <Property Name="isKhachHang" Type="bit" />
+    <Property Name="isQuanly" Type="bit" />
+  </EntityType>
+  <EntityType Name="PHONGTRO">
+    <Key>
+      <PropertyRef Name="IDPhong" />
+    </Key>
+    <Property Name="IDPhong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoPhong" Type="int" Nullable="false" />
+    <Property Name="HinhAnh" Type="nvarchar(max)" />
+    <Property Name="TrangThai" Type="nvarchar(max)" />
+    <Property Name="MoTa" Type="nvarchar(max)" />
+    <Property Name="DienTich" Type="real" />
+    <Property Name="TienPhong" Type="real" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_HOADON_NGUOIDUNG">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="MaND" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="IdND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOADON_PHONGTRO">
+    <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="0..1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGTRO">
+        <PropertyRef Name="IDPhong" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="IDPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOPDONG_HOADON">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="IdHoaDon" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="IdHoaDon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOPDONG_NGUOIDUNG">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="MaND" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="IdND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOPDONG_PHONGTRO">
+    <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGTRO">
+        <PropertyRef Name="IDPhong" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="IdPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLnhatroModelStoreContainer">
+    <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOPDONG" EntityType="Self.HOPDONG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHONGTRO" EntityType="Self.PHONGTRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_HOADON_NGUOIDUNG" Association="Self.FK_HOADON_NGUOIDUNG">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOADON_PHONGTRO" Association="Self.FK_HOADON_PHONGTRO">
+      <End Role="PHONGTRO" EntitySet="PHONGTRO" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOPDONG_HOADON" Association="Self.FK_HOPDONG_HOADON">
+      <End Role="HOADON" EntitySet="HOADON" />
+      <End Role="HOPDONG" EntitySet="HOPDONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOPDONG_NGUOIDUNG" Association="Self.FK_HOPDONG_NGUOIDUNG">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+      <End Role="HOPDONG" EntitySet="HOPDONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOPDONG_PHONGTRO" Association="Self.FK_HOPDONG_PHONGTRO">
+      <End Role="PHONGTRO" EntitySet="PHONGTRO" />
+      <End Role="HOPDONG" EntitySet="HOPDONG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13fc735316774662be3e61f91eb25867" Name="Diagram1">
+        <EntityTypeShape EntityType="QLnhatroModel.HOADON" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLnhatroModel.HOPDONG" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLnhatroModel.NGUOIDUNG" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLnhatroModel.PHONGTRO" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLnhatroModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="QLnhatroModel.FK_HOADON_NGUOIDUNG" ManuallyRouted="false" />
+        <AssociationConnector Association="QLnhatroModel.FK_HOADON_PHONGTRO" ManuallyRouted="false" />
+        <AssociationConnector Association="QLnhatroModel.FK_HOPDONG_HOADON" ManuallyRouted="false" />
+        <AssociationConnector Association="QLnhatroModel.FK_HOPDONG_NGUOIDUNG" ManuallyRouted="false" />
+        <AssociationConnector Association="QLnhatroModel.FK_HOPDONG_PHONGTRO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
